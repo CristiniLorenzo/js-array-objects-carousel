@@ -8,12 +8,19 @@ img{
     height: 100%;
     object-fit: cover;
 }
+body{
+    background-image: url(/img/body-background.webp);
+    background-size:cover;
+}
 .container{
-    width: 1000px;
-    height: 500px;
+    width: 1400px;
+    height: 700px;
     border: 1px solid black;
     margin: 50px auto;
     display: flex;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 10px 10px 20px 10px rgba(17, 0, 255, 0.678)
 }
 .image-container{
     width: 75%;
@@ -38,12 +45,18 @@ img{
     text-align: end;
     color: white;
 }
+.image-description h1{
+    font-size: 60px;
+}
+.image-description p{
+    font-size: 25px;
+}
 .thumbnail-container{
     width: 25%;
     flex-grow: 0;
     flex-shrink: 0;
     position: relative;
-    background-color: brown;
+    background-color: black;
 }
 .thumbnail {
     width: 100%;
