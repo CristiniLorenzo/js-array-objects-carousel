@@ -15,9 +15,6 @@
 
 
 
-
-
-
 const images = [
     {
         image: 'img/01.webp',
@@ -45,3 +42,73 @@ const images = [
         text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
     }
 ];
+
+let activeItem = 0;
+
+const imagesContainer = document.querySelector('.image-container')
+const thumbnailsContainer = document.querySelector('.thumbnail-container')
+
+// console.log(imagesContainer);
+// console.log(thumbnailsContainer);
+
+images.forEach((game) => {
+    const newDiv = `
+    <div class="image">
+        <img src="./${game.image}" alt="">
+
+        <div class="image-description">
+            <h1>${game.title}</h1>
+            <p>${game.text}</p>
+        </div>
+    </div>
+    `
+    console.log(newDiv);
+    imagesContainer.innerHTML += newDiv;
+
+    const newThumbnail = `
+    <div class="thumbnail">
+        <img src="./${game.image}" alt="">
+    </div>
+    `
+    console.log(newThumbnail)
+    thumbnailsContainer.innerHTML += newThumbnail
+})
+
+
+const allImages = document.querySelectorAll('.image');
+allImages[activeItem].classList.add('active');
+const allThumbnails = document.querySelectorAll('.thumbnail');
+allThumbnails[activeItem].classList.add('active');
+
+const nextArrow = document.querySelector('.arrow.next');
+nextArrow.addEventListener('click', function(){
+    document.querySelector('.image.active').classList.remove('active');
+    document.querySelector('.thumbnail.active').classList.remove('active');
+
+    if(activeItem < allImages.length - 1) {
+        activeItem++;
+    } 
+    else {
+        activeItem = 0;
+    }
+
+    allImages[activeItem].classList.add('active');
+    allThumbnails[activeItem].classList.add('active');
+})
+
+
+const prevArrow = document.querySelector('.arrow.prev');
+prevArrow.addEventListener('click', function(){
+    document.querySelector('.image.active').classList.remove('active');
+    document.querySelector('.thumbnail.active').classList.remove('active');
+
+    if(activeItem > 0) {
+        activeItem--;
+    } 
+    else {
+        activeItem = allImages.length - 1;
+    }
+
+    allImages[activeItem].classList.add('active');
+    allThumbnails[activeItem].classList.add('active');
+})
